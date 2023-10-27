@@ -1,0 +1,37 @@
+{% extends "myapp1/layout.html" %}
+
+
+{% block body %}
+    <ul>
+        {% for student in students_list %}
+            <li> <a href = {% url 'details' student.id %} >student {{student.id}} </a> - {{ student.first_name}}  {{student.last_name}}</li>
+        {% endfor %}
+    </ul>   
+
+    <h2> add student </h2>
+        
+    <form method="post" action="{% url 'add_student' %}">
+        {% csrf_token %}
+        
+        <div class = "f1">
+
+            {{ student_form.as_p }}
+        
+        </div>
+        <button type="submit">Add Student</button>
+    </form>
+    
+
+    <a href="{% url 'index' %}" class="button">ADD students </a>
+    
+    <a href="{% url 'courses' %}" class="button"> ADD Courses  </a>
+
+    </form>
+
+
+
+          
+   
+
+
+{% endblock %}

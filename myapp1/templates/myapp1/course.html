@@ -1,0 +1,18 @@
+{% extends "myapp1/layout.html" %}
+
+{% block body %}
+    <ul>
+        {% for course in courses_list %}
+            <li>{{ course.cname }}</li>
+        {% endfor %}
+    </ul>
+    <h2>Add Course</h2>
+    <form method="post" action="{% url 'add_course' %}">
+        {% csrf_token %}
+        {{ course_form }}
+        <button type="submit">Add Course</button>
+    </form>
+    <a href="{% url 'index' %}" class="button">ADD students </a>
+    
+    <a href="{% url 'courses' %}" class="button"> ADD Courses  </a>
+{% endblock %}
